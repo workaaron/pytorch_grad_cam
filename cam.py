@@ -26,7 +26,7 @@ from pytorch_grad_cam.utils.model_targets import ClassifierOutputTarget
 
 def get_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--use-cuda', action='store_true', default=False,
+    parser.add_argument('--use-cuda', action='store_true', default=True,
                         help='Use NVIDIA GPU acceleration')
     parser.add_argument(
         '--image-path',
@@ -143,9 +143,9 @@ if __name__ == '__main__':
     gb = deprocess_image(gb)
 
     if args.attack == "True":
-        cv2.imwrite(f'djangoapp/{args.method}_adv.jpg', cam_image)
+        cv2.imwrite(f'djangoapp/media/{args.method}_adv.jpg', cam_image)
     if args.attack == "False":
-        cv2.imwrite(f'djangoapp/{args.method}_clean.jpg', cam_image)
+        cv2.imwrite(f'djangoapp/media/{args.method}_clean.jpg', cam_image)
 
 
     # cv2.imwrite(f'{args.method}_gb.jpg', gb)
